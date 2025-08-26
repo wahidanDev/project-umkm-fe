@@ -93,38 +93,6 @@ export const TiktokIcon: React.FC<IconSvgProps> = ({
   </svg>
 );
 
-// Shopee
-export const ShopeeIcon: React.FC<IconSvgProps> = ({
-  size = 24,
-  height,
-  width,
-  ...props
-}) => (
-  <svg
-    aria-hidden="true"
-    fill="currentColor"
-    focusable="false"
-    height={size || height}
-    role="presentation"
-    viewBox="0 0 24 24"
-    width={size || width}
-    xmlns="http://www.w3.org/2000/svg"
-    {...props}
-  >
-    <path d="M15.5 4.5h-1.25V3a2.25 2.25 0 00-4.5 0v1.5H8.5A2.5 2.5 0 006 7v12a2.5 2.5 0 002.5 2.5h10A2.5 2.5 0 0021 19V7a2.5 2.5 0 00-2.5-2.5zM11 3a1.25 1.25 0 112.5 0v1.5H11V3zm5.5 18.5h-10A1.5 1.5 0 015 20V7c0-.827.673-1.5 1.5-1.5h10c.827 0 1.5.673 1.5 1.5v13c0 .827-.673 1.5-1.5 1.5z" />
-    <text
-      fill="currentColor"
-      fontFamily="Arial, sans-serif"
-      fontSize="6"
-      textAnchor="middle"
-      x="12"
-      y="16"
-    >
-      S
-    </text>
-  </svg>
-);
-
 export const MoonFilledIcon = ({
   size = 24,
   width,

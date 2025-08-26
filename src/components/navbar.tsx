@@ -19,10 +19,8 @@ import {
   WhatsappIcon,
   InstagramIcon,
   TiktokIcon,
-  ShopeeIcon,
   SearchIcon,
 } from "@/components/icons";
-import { Logo } from "@/components/icons";
 
 export const Navbar = () => {
   const searchInput = (
@@ -55,8 +53,7 @@ export const Navbar = () => {
             color="foreground"
             href="/"
           >
-            <Logo />
-            <p className="font-bold text-inherit">ACME</p>
+            <img src="/logo-aladdin.png" alt="logo" width={75}/>
           </Link>
         </NavbarBrand>
         <div className="hidden lg:flex gap-4 justify-start ml-2">
@@ -90,9 +87,6 @@ export const Navbar = () => {
           </Link>
           <Link isExternal href={siteConfig.links.github} title="GitHub">
             <TiktokIcon className="text-default-500" />
-          </Link>
-          <Link isExternal href={siteConfig.links.github} title="GitHub">
-            <ShopeeIcon className="text-default-500" />
           </Link>
           <ThemeSwitch />
         </NavbarItem>
