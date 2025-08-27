@@ -1,53 +1,49 @@
-import { useEffect, useState } from "react";
-import axios from "axios";
-import { Button } from "@heroui/button";
 import { Input } from "@heroui/input";
+import { Button } from "@heroui/button";
 import { Table, TableHeader, TableColumn, TableBody, TableRow, TableCell } from "@heroui/table";
 
 interface Product {
   _id: string;
   name: string;
   price: number;
-  category?: { name: string };
+  image?: string;
 }
 
-export default function AdminProducts() {
-  const [products, setProducts] = useState<Product[]>([]);
-  const [name, setName] = useState("");
-  const [price, setPrice] = useState<number>(0);
+interface ProductTabProps {
+  products: Product[];
+  name: string;
+  setName: (name: string) => void;
+  price: number;
+  setPrice: (price: number) => void;
+  imageFile: File | null;
+  setImageFile: (file: File | null) => void;
+  addProduct: () => void;
+  deleteProduct: (id: string) => void;
+}
 
-  useEffect(() => {
-    fetchProducts();
-  }, []);
-
-  const fetchProducts = async () => {
-    const res = await axios.get("http://localhost:5000/api/products");
-    setProducts(res.data);
-  };
-
-  const addProduct = async () => {
-    await axios.post("http://localhost:5000/api/products", { name, price });
-    setName("");
-    setPrice(0);
-    fetchProducts();
-  };
-
-  const deleteProduct = async (id: string) => {
-    await axios.delete(`http://localhost:5000/api/products/${id}`);
-    fetchProducts();
-  };
-
+export default function ProductTab({
+  products,
+  name,
+  setName,
+  price,
+  setPrice,
+  imageFile,
+  setImageFile,
+  addProduct,
+  deleteProduct,
+}: ProductTabProps) {
   return (
-    <div className="p-8 space-y-6">
-      <h1 className="text-2xl font-bold">📦 Kelola Produk</h1>
-      <div className="flex gap-4">
+    <div>
+      <div className="flex gap-4 items-end flex-wrap mb-4">
         <Input label="Nama Produk" value={name} onChange={(e) => setName(e.target.value)} />
         <Input type="number" label="Harga" value={price.toString()} onChange={(e) => setPrice(Number(e.target.value))} />
+        <input type="file" accept="image/*" onChange={(e) => setImageFile(e.target.files?.[0] || null)} />
         <Button onPress={addProduct} color="success">Tambah</Button>
       </div>
 
       <Table aria-label="Daftar Produk">
         <TableHeader>
+          <TableColumn>Gambar</TableColumn>
           <TableColumn>Nama</TableColumn>
           <TableColumn>Harga</TableColumn>
           <TableColumn>Aksi</TableColumn>
@@ -55,6 +51,7 @@ export default function AdminProducts() {
         <TableBody>
           {products.map((p) => (
             <TableRow key={p._id}>
+              <TableCell>{p.image ? <img src={p.image} alt={p.name} className="w-16 h-16 object-cover mx-auto" /> : "—"}</TableCell>
               <TableCell>{p.name}</TableCell>
               <TableCell>Rp {p.price.toLocaleString("id-ID")}</TableCell>
               <TableCell>

@@ -2,22 +2,22 @@ import { Star, ShoppingCart, Heart, Eye } from "lucide-react";
 import { Button } from "@heroui/button";
 import { Badge } from "@heroui/badge";
 import { Card, CardBody, CardFooter } from "@heroui/card";
-
+import { useCart } from "@/context/CartContext";
 
 interface ProductCardProps {
-  id: string;
+  _id: string;
   name: string;
   price: number;
   originalPrice?: number;
   rating: number;
   image: string;
-  category: string;
+  category: { _id: string; name: string }; // sesuai type di FeaturedProducts
   isNew?: boolean;
   discount?: number;
 }
 
 export function ProductCard({
-  id,
+  _id,
   name,
   price,
   originalPrice,
@@ -27,6 +27,8 @@ export function ProductCard({
   isNew = false,
   discount,
 }: ProductCardProps) {
+  const { addToCart } = useCart();
+
   return (
     <Card
       isHoverable
@@ -52,7 +54,11 @@ export function ProductCard({
             </Badge>
           )}
           {discount && (
-            <Badge color="danger" variant="shadow" className="shadow-lg animate-pulse">
+            <Badge
+              color="danger"
+              variant="shadow"
+              className="shadow-lg animate-pulse"
+            >
               -{discount}% OFF
             </Badge>
           )}
@@ -82,6 +88,9 @@ export function ProductCard({
         <div className="absolute bottom-4 left-4 right-4 opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-y-4 group-hover:translate-y-0">
           <Button
             fullWidth
+            onPress={() =>
+              addToCart({ _id, name, price, image })
+            }
             className="bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-700 hover:to-teal-700 text-white shadow-lg rounded-xl"
           >
             <ShoppingCart className="w-4 h-4 mr-2" />
@@ -99,11 +108,13 @@ export function ProductCard({
               color="success"
               className="text-xs font-medium"
             >
-              {category}
+              {category?.name}
             </Badge>
             <div className="flex items-center space-x-1">
               <Star className="w-4 h-4 fill-yellow-400 text-yellow-400" />
-              <span className="text-sm text-gray-600 font-medium">{rating}</span>
+              <span className="text-sm text-gray-600 font-medium">
+                {rating}
+              </span>
               <span className="text-xs text-gray-400">(120)</span>
             </div>
           </div>
@@ -127,6 +138,9 @@ export function ProductCard({
             size="sm"
             color="success"
             className="text-white rounded-xl shadow-md hover:shadow-lg"
+            onClick={() =>
+              addToCart({ _id, name, price, image })
+            }
           >
             Beli
           </Button>
@@ -134,12 +148,8 @@ export function ProductCard({
       </CardBody>
 
       <CardFooter className="flex items-center justify-between pt-2 border-t border-gray-100 text-xs text-gray-500">
-        <div className="flex items-center">
-          🚚 Gratis Ongkir
-        </div>
-        <div className="flex items-center">
-          ✅ Garansi Original
-        </div>
+        <div className="flex items-center">🚚 Gratis Ongkir</div>
+        <div className="flex items-center">✅ Garansi Original</div>
       </CardFooter>
     </Card>
   );

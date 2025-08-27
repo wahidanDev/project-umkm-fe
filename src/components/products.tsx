@@ -1,8 +1,7 @@
-"use client";
 
-import { ArrowRight } from "lucide-react";
-import { Button } from "@heroui/button";
 import { Card, CardBody } from "@heroui/card";
+import { FeaturedProducts } from "./featured-card";
+import { CartButton } from "./card-button";
 
 const categories = [
   {
@@ -46,6 +45,7 @@ const categories = [
 export function Categories() {
   return (
     <section className="py-20 relative overflow-hidden">
+      <CartButton />
       {/* Background decoration */}
       <div className="absolute top-0 right-0 w-96 h-96 bg-gradient-to-br from-emerald-200/30 to-teal-200/30 rounded-full blur-3xl"></div>
       <div className="absolute bottom-0 left-0 w-80 h-80 bg-gradient-to-tr from-blue-200/30 to-purple-200/30 rounded-full blur-3xl"></div>
@@ -53,11 +53,7 @@ export function Categories() {
       <div className="container mx-auto px-4 relative z-10">
         {/* Heading */}
         <div className="text-center mb-16">
-          <div className="inline-flex items-center px-4 py-2 bg-white/80 backdrop-blur-sm border border-emerald-200/50 rounded-full shadow-sm mb-6">
-            <span className="text-emerald-600 text-sm font-medium">
-              ✨ Kategori Pilihan
-            </span>
-          </div>
+    
           <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-6">
             Jelajahi Koleksi{" "}
             <span className="text-transparent bg-gradient-to-r from-emerald-600 to-teal-600 bg-clip-text">
@@ -103,19 +99,9 @@ export function Categories() {
             </Card>
           ))}
         </div>
-
-        {/* Call to action */}
-        <div className="text-center mt-16">
-          <Button
-            radius="lg"
-            size="lg"
-            className="bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-700 hover:to-teal-700 text-white shadow-lg hover:shadow-xl font-semibold px-8 py-6"
-          >
-            Jelajahi Semua Kategori
-            <ArrowRight className="w-5 h-5 ml-2 inline" />
-          </Button>
-        </div>
       </div>
+      <FeaturedProducts />
+      
     </section>
   );
 }

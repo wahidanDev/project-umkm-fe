@@ -67,7 +67,7 @@ const Hero = () => {
                   color="primary"
                   variant="shadow"
                   radius="full"
-                  className="absolute right-2 bottom-2 bg-linear-to-tr from-pink-500 to-yellow-500 text-white outline outline-14 outline-white"
+                  className="absolute right-2 bottom-2 bg-linear-to-tr from-pink-500 to-yellow-500 text-white outline outline-16 outline-white"
                 >
                   <ArrowRight />
                 </Button>
@@ -108,7 +108,7 @@ const Hero = () => {
                   color="primary"
                   variant="shadow"
                   radius="full"
-                  className="absolute right-2 bottom-2 bg-linear-to-tr from-pink-500 to-yellow-500 text-white outline outline-14 outline-white"
+                  className="absolute right-2 bottom-2 bg-linear-to-tr from-pink-500 to-yellow-500 text-white outline outline-16 outline-white"
                 >
                   <ArrowRight />
                 </Button>
@@ -149,7 +149,7 @@ const Hero = () => {
                   color="primary"
                   variant="shadow"
                   radius="full"
-                  className="absolute right-2 bottom-2 bg-linear-to-tr from-pink-500 to-yellow-500 text-white outline outline-14 outline-white"
+                  className="absolute right-2 bottom-2 bg-linear-to-tr from-pink-500 to-yellow-500 text-white outline outline-16 outline-white"
                 >
                   <ArrowRight />
                 </Button>
