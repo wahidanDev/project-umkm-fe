@@ -1,17 +1,25 @@
+"use client";
+import { useEffect, useState } from "react";
 import { Card, CardHeader, CardBody } from "@heroui/card";
 import { ResponsiveContainer, AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip } from "recharts";
+import { io } from "socket.io-client";
 
-interface SalesData {
-  month: string;
-  penjualan: number;
-  profit?: number;
-}
+export default function SalesChart() {
+  const [data, setData] = useState<any[]>([]);
 
-interface SalesTabProps {
-  salesData: SalesData[];
-}
+  useEffect(() => {
+    const socket = io("http://localhost:5000");
 
-export default function SalesTab({ salesData }: SalesTabProps) {
+    socket.on("sales:update", (salesData) => {
+      console.log("Realtime sales:", salesData);
+      setData(salesData);
+    });
+
+    return () => {
+      socket.disconnect();
+    };
+  }, []);
+
   return (
     <Card shadow="sm" className="p-4">
       <CardHeader>
@@ -19,7 +27,7 @@ export default function SalesTab({ salesData }: SalesTabProps) {
       </CardHeader>
       <CardBody>
         <ResponsiveContainer width="100%" height={300}>
-          <AreaChart data={salesData}>
+          <AreaChart data={data}>
             <CartesianGrid strokeDasharray="3 3" />
             <XAxis dataKey="month" />
             <YAxis />

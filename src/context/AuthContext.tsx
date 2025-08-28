@@ -1,5 +1,5 @@
 import { createContext, useContext, useState, ReactNode } from "react";
-import api from "./api/axios"; // sesuaikan path relatif dari context
+import api from "./api/axios"; 
 
 import { User } from "@/types/user";
 
@@ -38,7 +38,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     localStorage.setItem("user", JSON.stringify(user));
     setUser(user);
 
-    return user; // <-- penting, biar LoginPage bisa langsung ambil role
+    return user; 
   };
 
   /**

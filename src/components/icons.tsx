@@ -27,7 +27,6 @@ export const Logo: React.FC<IconSvgProps> = ({
   </svg>
 );
 
-// Whatsapp
 export const WhatsappIcon: React.FC<IconSvgProps> = ({
   size = 24,
   height,
@@ -49,7 +48,6 @@ export const WhatsappIcon: React.FC<IconSvgProps> = ({
   </svg>
 );
 
-// Instagram
 export const InstagramIcon: React.FC<IconSvgProps> = ({
   size = 24,
   height,
@@ -71,7 +69,6 @@ export const InstagramIcon: React.FC<IconSvgProps> = ({
   </svg>
 );
 
-// Tiktok
 export const TiktokIcon: React.FC<IconSvgProps> = ({
   size = 24,
   height,

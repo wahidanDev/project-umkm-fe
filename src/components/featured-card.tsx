@@ -17,7 +17,7 @@ type Product = {
   originalPrice?: number;
   rating: number;
   image: string;
-  category: Category; // bukan string
+  category: Category;
   isNew?: boolean;
   discount?: number;
 };

@@ -1,6 +1,10 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "@/context/AuthContext";
+import { Card, CardHeader, CardBody, CardFooter } from "@heroui/card";
+import { Input } from "@heroui/input";
+import { Button } from "@heroui/button";
+import { Lock, Mail } from "lucide-react";
 
 export default function LoginPage() {
   const [email, setEmail] = useState("");
@@ -14,7 +18,7 @@ export default function LoginPage() {
     setError("");
 
     try {
-      const loggedInUser = await login(email, password); // ⬅️ hasil langsung dipakai
+      const loggedInUser = await login(email, password);
 
       if (loggedInUser.role === "admin") {
         navigate("/admin");
@@ -27,38 +31,61 @@ export default function LoginPage() {
   };
 
   return (
-    <div className="flex items-center justify-center min-h-screen bg-gray-100">
-      <form
-        onSubmit={handleSubmit}
-        className="bg-white p-6 rounded-xl shadow-md w-96"
-      >
-        <h2 className="text-2xl font-bold mb-4">Login</h2>
+    <div className="flex items-center justify-center min-h-screen bg-gradient-to-br from-emerald-100 to-emerald-200">
+      <Card className="w-[380px] shadow-xl rounded-2xl">
+        <CardHeader className="flex flex-col items-center gap-2">
+          <h2 className="text-2xl font-bold text-emerald-700">Login</h2>
+          <p className="text-gray-500 text-sm">Masuk ke akun Anda</p>
+        </CardHeader>
 
-        {error && <p className="text-red-500 mb-2">{error}</p>}
+        <form onSubmit={handleSubmit}>
+          <CardBody className="flex flex-col gap-4">
+            {error && (
+              <p className="text-red-500 text-sm text-center">{error}</p>
+            )}
 
-        <input
-          type="email"
-          placeholder="Email"
-          className="w-full p-2 mb-3 border rounded"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-        />
+            <Input
+              type="email"
+              label="Email"
+              placeholder="Masukkan email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              startContent={<Mail className="text-gray-400" size={18} />}
+              variant="bordered"
+              radius="lg"
+              isRequired
+            />
 
-        <input
-          type="password"
-          placeholder="Password"
-          className="w-full p-2 mb-3 border rounded"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-        />
+            <Input
+              type="password"
+              label="Password"
+              placeholder="Masukkan password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              startContent={<Lock className="text-gray-400" size={18} />}
+              variant="bordered"
+              radius="lg"
+              isRequired
+            />
+          </CardBody>
 
-        <button
-          type="submit"
-          className="w-full bg-blue-600 text-white py-2 rounded hover:bg-blue-700"
-        >
-          Login
-        </button>
-      </form>
+          <CardFooter className="flex flex-col gap-3">
+            <Button
+              type="submit"
+              className="w-full bg-emerald-600 text-white rounded-lg"
+              size="lg"
+            >
+              Login
+            </Button>
+            <p className="text-xs text-gray-500">
+              Belum punya akun?{" "}
+              <a href="/register" className="text-emerald-600 font-semibold">
+                Daftar
+              </a>
+            </p>
+          </CardFooter>
+        </form>
+      </Card>
     </div>
   );
 }

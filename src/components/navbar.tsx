@@ -16,7 +16,7 @@ import { Button } from "@heroui/button";
 import { siteConfig } from "@/config/site";
 import { ThemeSwitch } from "@/components/theme-switch";
 import { WhatsappIcon, InstagramIcon, TiktokIcon } from "@/components/icons";
-import { useAuth } from "@/context/AuthContext"; // context auth
+import { useAuth } from "@/context/AuthContext"; 
 
 export const Navbar = () => {
   const { user, logout } = useAuth();

@@ -11,7 +11,7 @@ interface ProductCardProps {
   originalPrice?: number;
   rating: number;
   image: string;
-  category: { _id: string; name: string }; // sesuai type di FeaturedProducts
+  category: { _id: string; name: string }; 
   isNew?: boolean;
   discount?: number;
 }

@@ -1,6 +1,6 @@
 import { ShoppingCart } from "lucide-react";
 import { useCart } from "@/context/CartContext";
-import { useAuth } from "@/context/AuthContext"; // 👈 ambil user
+import { useAuth } from "@/context/AuthContext";
 import {
   Modal,
   ModalContent,
@@ -9,30 +9,50 @@ import {
   ModalFooter,
   useDisclosure,
 } from "@heroui/modal";
-import { useNavigate } from "react-router-dom"; // 👈 pakai ini
+import { useNavigate } from "react-router-dom";
+import api from "@/context/api/axios";
+import { useState } from "react";
+import toast from "react-hot-toast"; 
 
 export function CartButton() {
-  const { cart, removeFromCart } = useCart();
-  const { user } = useAuth(); // 👈 cek user login
+  const { cart, removeFromCart, clearCart } = useCart();
+  const { user } = useAuth();
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
-  const navigate = useNavigate(); // 👈 react-router-dom
+  const navigate = useNavigate();
 
-  const handleCheckout = () => {
+  const [loading, setLoading] = useState(false);
+
+  const total = cart.reduce((sum, item) => sum + item.price, 0);
+
+  const handleCheckout = async () => {
     if (!user) {
       navigate("/login");
       return;
     }
 
-    // jika user sudah login → redirect ke halaman success
-    navigate("/checkout-success");
-  };
+    const items = cart.map((item) => ({
+      product: item._id,
+      name: item.name,
+      price: item.price,
+      qty: 1,
+    }));
 
-  // Hitung total pembayaran
-  const total = cart.reduce((sum, item) => sum + item.price, 0);
+    try {
+      setLoading(true);
+      await api.post("/orders/checkout", { items, total });
+      clearCart();
+      localStorage.removeItem("cart");
+      toast.success("Checkout berhasil! 🎉");
+    } catch (err) {
+      console.error(err);
+      toast.error("Checkout gagal, coba lagi.");
+    } finally {
+      setLoading(false);
+    }
+  };
 
   return (
     <>
-      {/* Floating button di pojok kanan atas */}
       <button
         onClick={onOpen}
         className="fixed top-30 right-100 bg-emerald-600 text-white p-4 rounded-full shadow-lg hover:bg-emerald-700 transition animate-bounce"
@@ -45,13 +65,7 @@ export function CartButton() {
         )}
       </button>
 
-      {/* Modal rincian cart */}
-      <Modal
-        isOpen={isOpen}
-        onOpenChange={onOpenChange}
-        size="lg"
-        backdrop="blur"
-      >
+      <Modal isOpen={isOpen} onOpenChange={onOpenChange} size="lg" backdrop="blur">
         <ModalContent>
           {(onClose) => (
             <>
@@ -88,7 +102,6 @@ export function CartButton() {
                 )}
               </ModalBody>
 
-              {/* Tambah Footer dengan total + tombol Checkout */}
               {cart.length > 0 && (
                 <ModalFooter className="flex flex-col gap-2">
                   <div className="flex justify-between w-full text-lg font-semibold">
@@ -97,9 +110,14 @@ export function CartButton() {
                   </div>
                   <button
                     onClick={handleCheckout}
-                    className="w-full bg-emerald-600 text-white py-2 rounded-lg hover:bg-emerald-700 transition"
+                    disabled={loading}
+                    className={`w-full py-2 rounded-lg transition ${
+                      loading
+                        ? "bg-gray-400 cursor-not-allowed"
+                        : "bg-emerald-600 text-white hover:bg-emerald-700"
+                    }`}
                   >
-                    Checkout
+                    {loading ? "Memproses..." : "Checkout"}
                   </button>
                 </ModalFooter>
               )}
