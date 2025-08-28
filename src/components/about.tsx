@@ -1,6 +1,7 @@
 import { ArrowRight, Heart, Star, Users } from "lucide-react";
 import { Button } from "@heroui/button";
 import { Card, CardBody } from "@heroui/card";
+import { title, subtitle } from "@/components/primitives";
 
 export function About() {
   return (
@@ -13,14 +14,14 @@ export function About() {
         {/* Heading */}
         <div className="text-center mb-16">
           <div className="inline-flex items-center px-4 py-2 bg-white/80 backdrop-blur-sm border border-emerald-200/50 rounded-full shadow-sm mb-6">
-            <span className="text-emerald-600 text-sm font-medium">
+            <span className="text-yellow-600 text-sm font-medium">
               🌿 Tentang Kami
             </span>
           </div>
           <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-6">
             Kenali Lebih Dekat{" "}
-            <span className="text-transparent bg-gradient-to-r from-emerald-600 to-teal-600 bg-clip-text">
-              Toko Kami
+            <span className="text-transparent bg-gradient-to-r bg-clip-text">
+              <span className={title({ color: "yellow" })}>Toko Kami&nbsp;</span>
             </span>
           </h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
@@ -47,7 +48,7 @@ export function About() {
             </Card>
 
             {/* Floating badge di luar card, tetap nempel */}
-            <div className="absolute -bottom-6 -right-6 bg-gradient-to-r from-emerald-500 to-teal-500 text-white rounded-2xl px-6 py-4 shadow-lg">
+            <div className="absolute -bottom-6 -right-6 bg-gradient-to-r from-[#FF705B] to-[#FFB457] text-white rounded-2xl px-6 py-4 shadow-lg">
               <p className="text-lg font-bold">2+ Tahun</p>
               <p className="text-sm opacity-90">Pengalaman melayani</p>
             </div>
@@ -68,7 +69,7 @@ export function About() {
             {/* Values */}
             <div className="space-y-4">
               <div className="flex items-start gap-4">
-                <div className="w-12 h-12 bg-gradient-to-br from-emerald-500 to-teal-500 rounded-xl flex items-center justify-center text-white shadow-md">
+                <div className="w-12 h-12 bg-gradient-to-br from-[#FF705B] to-[#FFB457] rounded-xl flex items-center justify-center text-white shadow-md">
                   <Heart className="w-6 h-6" />
                 </div>
                 <div>
@@ -114,7 +115,7 @@ export function About() {
           <Button
             radius="lg"
             size="lg"
-            className="bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-700 hover:to-teal-700 text-white shadow-lg hover:shadow-xl font-semibold px-8 py-6"
+            className="bg-gradient-to-r from-[#FF705B] to-[#FFB457] hover:from-yellow-700 hover:to-amber-700 text-white shadow-lg hover:shadow-xl font-semibold px-8 py-6"
           >
             Hubungi Kami
             <ArrowRight className="w-5 h-5 ml-2 inline" />

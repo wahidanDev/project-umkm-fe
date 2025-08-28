@@ -12,10 +12,10 @@ export const Footer: FC = () => {
           {/* Brand Section */}
           <div className="space-y-4">
             <div className="flex items-center space-x-2">
-              <div className="w-8 h-8 bg-emerald-600 rounded-lg flex items-center justify-center">
+              <div className="w-8 h-8 bg-yellow-600 rounded-lg flex items-center justify-center">
                 <span className="text-white text-sm">☪</span>
               </div>
-              <span className="text-xl text-emerald-400 font-semibold">
+              <span className="text-xl text-yellow-400 font-semibold">
                 Aladdin
               </span>
             </div>
@@ -27,7 +27,7 @@ export const Footer: FC = () => {
 
           {/* Quick Links */}
           <div className="space-y-4">
-            <h3 className="text-emerald-400 font-semibold">Tautan Cepat</h3>
+            <h3 className="text-yellow-400 font-semibold">Tautan Cepat</h3>
             <ul className="space-y-2 text-sm">
               {[
                 { label: "Tentang Kami", to: "/about" },
@@ -37,7 +37,7 @@ export const Footer: FC = () => {
                 <li key={link.label}>
                   <Link
                     to={link.to}
-                    className="text-gray-400 hover:text-emerald-400 transition-colors"
+                    className="text-gray-400 hover:text-yellow-400 transition-colors"
                   >
                     {link.label}
                   </Link>
@@ -48,18 +48,18 @@ export const Footer: FC = () => {
 
           {/* Contact & Newsletter */}
           <div className="space-y-4">
-            <h3 className="text-emerald-400 font-semibold">Hubungi Kami</h3>
+            <h3 className="text-yellow-400 font-semibold">Hubungi Kami</h3>
             <div className="space-y-3 text-sm">
               <div className="flex items-center space-x-2">
-                <Phone className="w-4 h-4 text-emerald-400" />
+                <Phone className="w-4 h-4 text-yellow-400" />
                 <span className="text-gray-400">+62 812-3456-7890</span>
               </div>
               <div className="flex items-center space-x-2">
-                <Mail className="w-4 h-4 text-emerald-400" />
+                <Mail className="w-4 h-4 text-yellow-400" />
                 <span className="text-gray-400">info@aladdin.com</span>
               </div>
               <div className="flex items-start space-x-2">
-                <MapPin className="w-4 h-4 text-emerald-400 mt-0.5" />
+                <MapPin className="w-4 h-4 text-yellow-400 mt-0.5" />
                 <span className="text-gray-400">
                   Jl. Cibangkong Lor No. 13, Bandung
                 </span>

@@ -16,7 +16,7 @@ import { Button } from "@heroui/button";
 import { siteConfig } from "@/config/site";
 import { ThemeSwitch } from "@/components/theme-switch";
 import { WhatsappIcon, InstagramIcon, TiktokIcon } from "@/components/icons";
-import { useAuth } from "@/context/AuthContext"; 
+import { useAuth } from "@/context/AuthContext";
 
 export const Navbar = () => {
   const { user, logout } = useAuth();
@@ -32,7 +32,7 @@ export const Navbar = () => {
       <NavbarContent className="basis-1/5 sm:basis-full" justify="start">
         <NavbarBrand className="gap-3 max-w-fit">
           <RouterLink to="/" className="flex items-center gap-1">
-            <img src="/logo-aladdin.png" alt="logo" width={75}/>
+            <img src="/logo-aladdin.png" alt="logo" width={75} />
           </RouterLink>
         </NavbarBrand>
         <div className="hidden lg:flex gap-4 justify-start ml-2">
@@ -41,7 +41,7 @@ export const Navbar = () => {
               <Link
                 className={clsx(
                   linkStyles({ color: "foreground" }),
-                  "data-[active=true]:text-primary data-[active=true]:font-medium",
+                  "data-[active=true]:text-primary data-[active=true]:font-medium"
                 )}
                 color="foreground"
                 href={item.href}
@@ -73,20 +73,15 @@ export const Navbar = () => {
 
           {/* Tombol Login / Logout */}
           {user ? (
-            <Button
-              size="sm"
-              color="danger"
-              variant="solid"
-              onPress={logout}
-            >
+            <Button size="sm" color="danger" variant="solid" onPress={logout}>
               Logout
             </Button>
           ) : (
             <Button
               size="sm"
-              color="success"
               variant="solid"
               onPress={handleLogin}
+              className="bg-gradient-to-r from-[#FF705B] to-[#FFB457] text-white"
             >
               Login
             </Button>

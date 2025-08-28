@@ -55,7 +55,7 @@ export function CartButton() {
     <>
       <button
         onClick={onOpen}
-        className="fixed top-30 right-100 bg-emerald-600 text-white p-4 rounded-full shadow-lg hover:bg-emerald-700 transition animate-bounce"
+        className="fixed top-30 right-100 bg-yellow-600 text-white p-4 rounded-full shadow-lg hover:bg-yellow-700 transition animate-bounce"
       >
         <ShoppingCart size={24} />
         {cart.length > 0 && (
@@ -114,7 +114,7 @@ export function CartButton() {
                     className={`w-full py-2 rounded-lg transition ${
                       loading
                         ? "bg-gray-400 cursor-not-allowed"
-                        : "bg-emerald-600 text-white hover:bg-emerald-700"
+                        : "bg-yellow-600 text-white hover:bg-yellow-700"
                     }`}
                   >
                     {loading ? "Memproses..." : "Checkout"}

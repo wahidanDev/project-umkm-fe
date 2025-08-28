@@ -1,38 +1,38 @@
-
 import { Card, CardBody } from "@heroui/card";
 import { FeaturedProducts } from "./featured-card";
 import { CartButton } from "./card-button";
+import { Sparkles } from "lucide-react";
 
 const categories = [
   {
     id: 1,
     name: "Sajadah & Karpet",
     image: "/sajadah.jpg",
-    color: "from-emerald-500 to-teal-500",
+    color: "from-[#FF705B] to-[#FFB457]",
   },
   {
     id: 2,
     name: "Al-Quran & Buku",
     image: "/alquran.jpg",
-    color: "from-blue-500 to-indigo-500",
+    color: "from-[#FF705B] to-[#FFB457]",
   },
   {
     id: 3,
     name: "Tasbih & Dzikir",
     image: "/tasbih.jpg",
-    color: "from-amber-500 to-orange-500",
+    color: "from-[#FF705B] to-[#FFB457]",
   },
   {
     id: 4,
     name: "Hijab & Mukena",
     image: "/hijab.jpg",
-    color: "from-purple-500 to-pink-500",
+    color: "from-[#FF705B] to-[#FFB457]",
   },
   {
     id: 5,
     name: "Parfum & Minyak Wangi",
     image: "/parfume.jpg",
-    color: "from-rose-500 to-red-500",
+    color: "from-[#FF705B] to-[#FFB457]",
   },
   {
     id: 6,
@@ -52,17 +52,25 @@ export function Categories() {
 
       <div className="container mx-auto px-4 relative z-10">
         {/* Heading */}
+        {/* Section header */}
         <div className="text-center mb-16">
-    
+          <div className="inline-flex items-center px-4 py-2 bg-gradient-to-r from-emerald-50 to-teal-50 border border-emerald-200/50 rounded-full shadow-sm mb-6">
+            <Sparkles className="w-4 h-4 text-yellow-600 mr-2" />
+            <span className="text-yellow-700 text-sm font-medium">
+              Produk Terpilih
+            </span>
+          </div>
+
           <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-6">
-            Jelajahi Koleksi{" "}
-            <span className="text-transparent bg-gradient-to-r from-emerald-600 to-teal-600 bg-clip-text">
-              Perlengkapan Ibadah
+            Koleksi{" "}
+            <span className="text-transparent bg-gradient-to-r from-[#FF705B] to-[#FFB457] bg-clip-text">
+              Produk Unggulan
             </span>
           </h2>
+
           <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
-            Pilih dari berbagai kategori perlengkapan ibadah berkualitas yang
-            telah dipercaya ribuan muslimin dan muslimat
+            Produk-produk pilihan berkualitas tinggi dengan harga terjangkau,
+            dipercaya ribuan pelanggan di seluruh Indonesia
           </p>
         </div>
 
@@ -87,21 +95,20 @@ export function Categories() {
 
                   {/* Content */}
                   <div className="absolute bottom-4 left-4 right-4">
-                    <h3 className="text-white font-bold text-lg mb-1 group-hover:text-emerald-300 transition-colors duration-300">
+                    <h3 className="text-white font-bold text-lg mb-1 group-hover:text-yellow-300 transition-colors duration-300">
                       {category.name}
                     </h3>
                   </div>
                 </div>
 
                 {/* Hover overlay with additional info */}
-                <div className="absolute inset-0 bg-gradient-to-t from-emerald-600/90 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-500 flex items-end"></div>
+                <div className="absolute inset-0 bg-gradient-to-t from-yellow-600/90 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-500 flex items-end"></div>
               </CardBody>
             </Card>
           ))}
         </div>
       </div>
       <FeaturedProducts />
-      
     </section>
   );
 }

@@ -31,10 +31,10 @@ export default function LoginPage() {
   };
 
   return (
-    <div className="flex items-center justify-center min-h-screen bg-gradient-to-br from-emerald-100 to-emerald-200">
+    <div className="flex items-center justify-center min-h-screen bg-gradient-to-br from-[#FF705B] to-[#FFB457]">
       <Card className="w-[380px] shadow-xl rounded-2xl">
         <CardHeader className="flex flex-col items-center gap-2">
-          <h2 className="text-2xl font-bold text-emerald-700">Login</h2>
+          <h2 className="text-2xl font-bold text-yellow-700">Login</h2>
           <p className="text-gray-500 text-sm">Masuk ke akun Anda</p>
         </CardHeader>
 
@@ -72,14 +72,14 @@ export default function LoginPage() {
           <CardFooter className="flex flex-col gap-3">
             <Button
               type="submit"
-              className="w-full bg-emerald-600 text-white rounded-lg"
+              className="w-full bg-yellow-600 text-white rounded-lg"
               size="lg"
             >
               Login
             </Button>
             <p className="text-xs text-gray-500">
               Belum punya akun?{" "}
-              <a href="/register" className="text-emerald-600 font-semibold">
+              <a href="/register" className="text-yellow-600 font-semibold">
                 Daftar
               </a>
             </p>
