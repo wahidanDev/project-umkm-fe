@@ -29,10 +29,8 @@ export const Footer: FC = () => {
           <div className="space-y-4">
             <h3 className="text-yellow-400 font-semibold">Tautan Cepat</h3>
             <ul className="space-y-2 text-sm">
-              {[
-                { label: "Tentang Kami", to: "/about" },
+              {[                
                 { label: "Produk", to: "/produk" },
-                { label: "FAQ", to: "/faq" },
               ].map((link) => (
                 <li key={link.label}>
                   <Link
@@ -73,7 +71,7 @@ export const Footer: FC = () => {
         <div className="border-t border-gray-800 mt-8 pt-8">
           <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
             <p className="text-gray-400 text-sm">
-              © {new Date().getFullYear()} Berkah Islami. Semua hak cipta
+              © {new Date().getFullYear()} Aladdin. Semua hak cipta
               dilindungi.
             </p>
           </div>

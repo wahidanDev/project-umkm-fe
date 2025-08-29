@@ -12,6 +12,7 @@ export default function RegisterPage() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
+  const [role, setRole] = useState("user"); // default role
   const navigate = useNavigate();
   const { register } = useAuth();
 
@@ -24,7 +25,7 @@ export default function RegisterPage() {
     }
 
     try {
-      await register(username, email, password, "user");
+      await register(username, email, password, role);
       toast.success("Registrasi berhasil ✅");
       navigate("/login");
     } catch (err: any) {
@@ -81,6 +82,18 @@ export default function RegisterPage() {
               onChange={(e) => setConfirmPassword(e.target.value)}
               isRequired
             />
+
+            {/* Dropdown Role */}
+            <div className="flex flex-col">
+              <select
+                className="border rounded-lg p-2"
+                value={role}
+                onChange={(e) => setRole(e.target.value)}
+              >
+                <option value="user">User</option>
+                <option value="admin">Admin</option>
+              </select>
+            </div>
 
             <Button
               type="submit"

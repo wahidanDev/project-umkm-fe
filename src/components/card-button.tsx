@@ -55,7 +55,7 @@ export function CartButton() {
     <>
       <button
         onClick={onOpen}
-        className="fixed top-30 right-100 bg-yellow-600 text-white p-4 rounded-full shadow-lg hover:bg-yellow-700 transition animate-bounce"
+        className="fixed top-30 right-200 bg-yellow-600 text-white p-4 rounded-full shadow-lg hover:bg-yellow-700 transition animate-bounce"
       >
         <ShoppingCart size={24} />
         {cart.length > 0 && (
